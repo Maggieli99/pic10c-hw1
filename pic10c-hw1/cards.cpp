@@ -2,11 +2,10 @@
 #include <cstdlib>
 #include <iostream>
 
-/* 
-You might or might not need these two extra libraries 
+ 
+//You might or might not need these two extra libraries
 #include <iomanip>
 #include <algorithm>
-*/
 
 
 /* *************************************************
@@ -109,14 +108,64 @@ string Card::get_spanish_rank() const {
 
 // Accessor: returns a string with the suit of the card in English 
 // This is just a stub! Modify it to your liking.
-string Card::get_english_suit() const { 
-   return "";
+string Card::get_english_suit() const {
+    string suitNameEng;
+    switch (suit) {
+        case OROS:
+           suitNameEng = "golds";
+       break;
+        case COPAS:
+           suitNameEng = "cups";
+       break;
+        case ESPADAS:
+           suitNameEng = "swords";
+       break;
+        case BASTOS:
+           suitNameEng = "clubs";
+       break;
+        default: break;
+      }
+      return suitNameEng;
 }
 
 // Accessor: returns a string with the rank of the card in English 
 // This is just a stub! Modify it to your liking.
-string Card::get_english_rank() const { 
-   return "";
+string Card::get_english_rank() const {
+    string rankNameEng;
+    switch (rank) {
+       case AS:
+          rankNameEng = "Ace";
+      break;
+       case DOS:
+          rankNameEng = "Two";
+      break;
+       case TRES:
+          rankNameEng = "Three";
+      break;
+       case CUATRO:
+          rankNameEng= "Four";
+      break;
+       case CINCO:
+          rankNameEng = "Five";
+      break;
+       case SEIS:
+          rankNameEng = "Six";
+      break;
+       case SIETE:
+          rankNameEng = "Seven";
+      break;
+       case SOTA:
+          rankNameEng = "Jack";
+      break;
+       case CABALLO:
+          rankNameEng = "Horse";
+      break;
+       case REY:
+          rankNameEng = "King";
+      break;
+       default: break;
+    }
+    return rankNameEng;
 }
 
 
