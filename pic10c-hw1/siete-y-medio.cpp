@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <ctime>
-#include <ctime>
 #include <cstdlib>
 #include "cards.h"
 using namespace std;
