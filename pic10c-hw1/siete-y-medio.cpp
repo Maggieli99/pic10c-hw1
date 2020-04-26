@@ -63,7 +63,6 @@ int main(){
             if (c == 'y') {
                 my_count++;
                 another_card = true;
-                
             }
             else {
                 another_card = false;
@@ -107,7 +106,5 @@ int main(){
         cout << "Bye!" << endl;
     }
     
-    
-   
    return 0;
 }
