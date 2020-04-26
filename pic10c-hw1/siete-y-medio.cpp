@@ -4,6 +4,7 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <time.h>
 #include "cards.h"
 using namespace std;
 
@@ -19,15 +20,16 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
+    srand (time(NULL));
     int dealer_lose = 0;
     double bet;
     Player player(100);
-    Hand my_hand;
-    Hand dealer_hand;
     char c;
-    bool another_card = true;
     
     while (player.get_money() > 0 && dealer_lose < 900) {
+        Hand my_hand;
+        Hand dealer_hand;
+        bool another_card = true;
         int my_count = 0;
         int dealer_count = 0;
         cout << "You have $" << player.get_money() << ". Enter bet: ";
@@ -40,25 +42,35 @@ int main(){
             else
                 break;
         }
+        bool done = false;
         while (another_card){
             my_hand.add_card();
+            
             if (my_count > 0) {
                 my_hand.show_new_card();
             }
             cout << "Your cards: " << endl;
             my_hand.show_card();
-            cout << "Your total is " << my_hand.get_value() << ". Do you want another card (y/n)?";
+            cout << "Your total is " << my_hand.get_value() << ". ";
+            if (my_hand.get_value() > 7.5) {
+                cout << "Too bad. You lose " << bet << "." << endl;
+                player.lose_money(bet);
+                done = true;
+                break;
+            }
+            cout << "Do you want another card (y/n)?";
             cin >> c;
             if (c == 'y') {
                 my_count++;
+                another_card = true;
+                
             }
             else {
                 another_card = false;
             }
         }
-        if (my_hand.get_value() > 7.5) {
-            cout << "Too bad. You lose " << bet << "." << endl;
-            player.lose_money(bet);
+        if(done){
+            continue;
         }
         while (dealer_hand.get_value() < 5.5) {
             dealer_hand.add_card();
@@ -67,19 +79,19 @@ int main(){
             }
             cout << "Dealer's cards:" << endl;
             dealer_hand.show_card();
-            cout << "The dealer's total is " << dealer_hand.get_value()<< "." << endl;
+            cout << "The dealer's total is " << dealer_hand.get_value()<< "." << endl << endl;
+            dealer_count++;
         }
         if (dealer_hand.get_value() > 7.5) {
-            cout << "You win " << bet << "." << endl;
+            cout << "You win " << bet << "." << endl << endl;
             player.win_money(bet);
             dealer_lose += bet;
-        }
-        if (dealer_hand.get_value() < my_hand.get_value()) {
-            cout << "You win " << bet << "." << endl;
+        } else if (dealer_hand.get_value() < my_hand.get_value()) {
+            cout << "You win " << bet << "." << endl << endl;
             player.win_money(bet);
             dealer_lose += bet;
         } else if (dealer_hand.get_value() > my_hand.get_value()) {
-            cout << "Too bad. You lose " << bet << "." << endl;
+            cout << "Too bad. You lose " << bet << "." << endl << endl;
             player.lose_money(bet);
         } else {
             cout << "No body wins!" << endl;
