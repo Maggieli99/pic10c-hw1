@@ -158,7 +158,7 @@ string Card::get_english_rank() const {
           rankNameEng = "Jack";
       break;
        case CABALLO:
-          rankNameEng = "Knight";
+          rankNameEng = "Horse";
       break;
        case REY:
           rankNameEng = "King";
@@ -195,4 +195,19 @@ bool Card::operator < (Card card2) const {
    Player class
    ************************************************* */
 // Implemente the member functions of the Player class here.
+Player::Player(int m) {
+    money = m;
+}
 
+
+int Player::get_money() {
+    return money;
+}
+
+void Player::win_money(int win) {
+    money += win;
+}
+
+void Player::lose_money(int lose) {
+    money -= lose;
+}

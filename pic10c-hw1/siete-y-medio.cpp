@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <ctime>
-#include <ctime>
 #include <cstdlib>
 #include "cards.h"
 using namespace std;
@@ -20,5 +19,7 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
+    cout << "You have $" << 
+   
    return 0;
 }

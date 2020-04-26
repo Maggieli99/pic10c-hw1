@@ -77,6 +77,9 @@ class Player {
       Player(int m);
 
       // You decide what functions you'll need...
+    int get_money();
+    void win_money(int win);
+    void lose_money(int lose);
 
    private:
       int money;
