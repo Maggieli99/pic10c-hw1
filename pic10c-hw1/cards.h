@@ -65,6 +65,9 @@ class Hand {
 
       // You decide what functions you'll need...
     void add_card();
+    void show_card();
+    double get_value();
+    void show_new_card();
 
    private:
       // You decide what fields you'll need...

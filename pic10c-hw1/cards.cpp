@@ -206,7 +206,20 @@ void Hand::add_card() {
     total_value += value;
 }
 
+void Hand::show_card() {
+    for (int i = 0; i < my_card.size(); i++) {
+        cout << my_card[i].get_english_rank() << "of" << my_card[i].get_english_suit() << endl;
+    }
+}
 
+double Hand::get_value() {
+    return total_value;
+}
+
+void Hand::show_new_card() {
+    cout << "New card:" << endl;
+    cout << "        " << my_card[my_card.size()].get_english_rank() << "of" << my_card[my_card.size()].get_english_suit() << endl;
+}
 
 
 /* *************************************************
