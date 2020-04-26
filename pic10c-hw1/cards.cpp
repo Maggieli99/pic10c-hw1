@@ -158,7 +158,7 @@ string Card::get_english_rank() const {
           rankNameEng = "Jack";
       break;
        case CABALLO:
-          rankNameEng = "Horse";
+          rankNameEng = "Knight";
       break;
        case REY:
           rankNameEng = "King";
