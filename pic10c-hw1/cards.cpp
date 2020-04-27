@@ -221,6 +221,11 @@ void Hand::show_new_card() {
     cout << "        " << my_card[my_card.size() - 1].get_english_rank() << " of " << my_card[my_card.size() - 1].get_english_suit() << endl << endl;
 }
 
+void Hand::write_to_file(ofstream& outFile) {
+    for (int i = 0; i < my_card.size(); i++) {
+        outFile << "        " << my_card[i].get_english_rank() << " of " << my_card[i].get_english_suit() << endl;
+    }
+}
 
 /* *************************************************
    Player class

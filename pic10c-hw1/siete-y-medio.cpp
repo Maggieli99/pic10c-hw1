@@ -20,13 +20,18 @@ using namespace std;
 // Stub for main
 int main(){
    /* --STATEMENTS-- */
-    srand (time(NULL));
+    srand(time(NULL));
+    ofstream outFile;
+    outFile.open("gamelog.txt");
     int dealer_lose = 0;
+    int game_num = 0;
     double bet;
     Player player(100);
     char c;
     
+    outFile << "------------------------------------------" << endl << endl;
     while (player.get_money() > 0 && dealer_lose < 900) {
+        game_num++;
         Hand my_hand;
         Hand dealer_hand;
         bool another_card = true;
@@ -42,10 +47,10 @@ int main(){
             else
                 break;
         }
+        outFile << "Game number: " << game_num << "          Money left: $" << player.get_money() << endl;
         bool done = false;
         while (another_card){
             my_hand.add_card();
-            
             if (my_count > 0) {
                 my_hand.show_new_card();
             }
@@ -54,6 +59,11 @@ int main(){
             cout << "Your total is " << my_hand.get_value() << ". ";
             if (my_hand.get_value() > 7.5) {
                 cout << "Too bad. You lose " << bet << "." << endl;
+                outFile << "Bet: " << bet << endl << endl;
+                outFile << "Your cards:" << endl;
+                my_hand.write_to_file(outFile);
+                outFile << "Your total: " << my_hand.get_value() << endl << endl;
+                outFile << "------------------------------------------" << endl << endl;
                 player.lose_money(bet);
                 done = true;
                 break;
@@ -95,6 +105,14 @@ int main(){
         } else {
             cout << "No body wins!" << endl;
         }
+        outFile << "Bet: " << bet << endl << endl;
+        outFile << "Your cards:" << endl;
+        my_hand.write_to_file(outFile);
+        outFile << "Your total: " << my_hand.get_value() << endl << endl;
+        outFile << "Dealer's cards: " << endl;
+        dealer_hand.write_to_file(outFile);
+        outFile << "Dealer's total is " << dealer_hand.get_value() << endl << endl;
+        outFile << "------------------------------------------" << endl << endl;
     }
     if (player.get_money() == 0) {
         cout << "You have $0! GAME OVER!" << endl;
