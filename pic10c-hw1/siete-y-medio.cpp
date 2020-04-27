@@ -61,7 +61,7 @@ int main(){
             cout << "Do you want another card (y/n)?";
             cin >> c;
             if (c == 'y') {
-                my_count++;
+                my_count += 1;
                 another_card = true;
             }
             else {
